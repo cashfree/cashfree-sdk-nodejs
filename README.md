@@ -18,7 +18,8 @@ npm install https://github.com/cashfree/cashfree-sdk-nodejs
 ### Pre-requisites
   - A [Cashfree Merchant Account](https://merchant.cashfree.com/merchant/sign-up)
   - API keys for different products. You can generate them from your Dashboard
-
+### IP Whitelisting
+Your IP has to be whitelisted to hit Cashfree's server. For more information please go here.
 ## Usage
 ### Payouts
 The package needs to be configured with your account's secret key which is available in your Cashfree Dashboard.
@@ -29,8 +30,8 @@ const Cashfree = require("cashfree-sdk");
 let Payouts = Cashfree.Payouts;
 Payouts.Init({
 	"ENV": "TEST", 
-	"ClientID": "CF27JBMB8GN4CHAQI6Q",
-	"ClientSecret": "fd48e5a6084d611e4fd9c6f0f8fcbca16d221ace"
+	"ClientID": "CLIENTID",
+	"ClientSecret": "CLIENTSECRET"
 });
 ```
 | Option              | Default                       | Description                                                                           |
