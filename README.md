@@ -64,16 +64,16 @@ Can also be used synchronously using async/await:
 ```js
 var syncCall = async function (){
 	var res = await Payouts.Beneficiary.Add({
-	"beneId": "JOHN18012", 
-	"name": "john doe",
-	"email": "johndoe@cashfree.com", 
-	"phone": "9876543210", 
-	"bankAccount": "00001111222233", 
-	"ifsc": "HDFC0000001", 
-	"address1" : "ABC Street", 
-	"city": "Bangalore", 
-	"state":"Karnataka", 
-	"pincode": "560001"
+		"beneId": "JOHN18012", 
+		"name": "john doe",
+		"email": "johndoe@cashfree.com", 
+		"phone": "9876543210", 
+		"bankAccount": "00001111222233", 
+		"ifsc": "HDFC0000001", 
+		"address1" : "ABC Street", 
+		"city": "Bangalore", 
+		"state":"Karnataka", 
+		"pincode": "560001"
 	});
 	return res;
 }
