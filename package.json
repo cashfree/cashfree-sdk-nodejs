@@ -1,0 +1,11 @@
+{
+  "name": "cashfree-sdk",
+  "version": "1.0.0",
+  "description": "This module contains all methods to help you integrate cashfree's payout solution",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
