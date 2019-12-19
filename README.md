@@ -1,4 +1,4 @@
-# cashfree-sdk
+# cashfree-sdk-nodejs
 
 The official Cashfree SDK for JavaScript, available for Node.js backends
 
