@@ -50,5 +50,15 @@ Contains all APIs related to beneficiary.
     ```
 - [Remove Beneficiary](https://docs.cashfree.com/docs/payout/guide/#fetch-beneficiary-id)
     ```js
-    
+    Cashfree.Beneficiary.Remove({
+    	beneId: "JOHN18011"
+    }).then(function(d){
+    	console.log(d)
+    });
     ```
+### TODO Readme
+-   #### Transfers
+-   #### Cashgram
+-   #### Validation
+-   #### Get Balance
+-   #### Self Withdrawal
