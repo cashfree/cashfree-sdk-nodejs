@@ -11,19 +11,16 @@ Please refer to the [Cashfree Docs](https://docs.cashfree.com/docs/)  for the co
 
 The preferred way to install the Cashfree SDK for Node.js is to use the [npm](http://npmjs.org) package manager for Node.js. Simply type the following into a terminal window:
 ```sh
-npm install cashfree-sdk
+npm install https://github.com/cashfree/cashfree-sdk-nodejs
 ```
 
 ## Getting Started
 ### Pre-requisites
   - A [Cashfree Merchant Account](https://merchant.cashfree.com/merchant/sign-up)
   - API keys for different products. You can generate them from your Dashboard
- ## Installation
-```sh
-npm install cashfree-sdk
-```
 
 ## Usage
+### Payouts
 The package needs to be configured with your account's secret key which is available in your Cashfree Dashboard.
 ```js
 const Cashfree = require("cashfree-sdk");
@@ -82,3 +79,9 @@ var syncCall = async function (){
 }
 syncCall();
 ```
+- For more information about the APIs go to [Payouts](Payouts).
+- Complete list of [APIs](https://docs.cashfree.com/docs/payout/guide/#fetch-beneficiary-id).
+### TODO
+- #### PG
+- #### Market Place
+- #### Autocollect
