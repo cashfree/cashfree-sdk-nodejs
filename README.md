@@ -29,8 +29,8 @@ const Cashfree = require("cashfree-sdk");
 let Payouts = Cashfree.Payouts;
 Payouts.Init({
 	"ENV": "TEST", 
-	"ClientID": "CF27JBMB8GN4CHAQI6Q",
-	"ClientSecret": "fd48e5a6084d611e4fd9c6f0f8fcbca16d221ace"
+	"ClientID": "CF27JBMB8GN4CAAQI6Q",
+	"ClientSecret": "fd48e5a6084d611e4fd9c6f0f8fcbcb16d221ace"
 });
 ```
 | Option              | Default                       | Description                                                                           |
@@ -42,7 +42,7 @@ Payouts.Init({
 ### Using Promises
 Every method returns a promise which can be used:
 ```js
-Cashfree.Beneficiary.Add({
+Payouts.Beneficiary.Add({
 	"beneId": "JOHN18012", 
 	"name": "john doe",
 	"email": "johndoe@cashfree.com", 
@@ -63,7 +63,7 @@ Can also be used synchronously using async/await:
 
 ```js
 var syncCall = async function (){
-	var res = await Cashfree.Beneficiary.Add({
+	var res = await Payouts.Beneficiary.Add({
 	"beneId": "JOHN18012", 
 	"name": "john doe",
 	"email": "johndoe@cashfree.com", 
