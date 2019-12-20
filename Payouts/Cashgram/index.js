@@ -81,4 +81,43 @@ let GetCashgramStatus = function(req) {
 	});
 }
 
-module.exports = {CreateCashgram, GetCashgramStatus};
+let DeactivateCashgram = function(req) {
+	return new Promise(async (resolve, reject) => {
+		try {
+			await PayoutConstants.checkToken();
+		} catch (error) {
+			return resolve(error);
+		}
+		
+		var requiredParams = ["cashgramId"];
+		var checkParams = Utils.checkKeysInObject(req, requiredParams);
+		if (checkParams != true) {
+			return resolve (checkParams);
+		}
+
+		var path = "/payout/v1/deactivateCashgram";
+		var obj = {};
+		obj.headers = {
+			"Content-Type": "application/json",
+			"Authorization": "Bearer "+PayoutConstants.BearerToken
+		};
+		obj.path = path;
+		obj.hostname = PayoutConstants.MPAEndpoint;
+		obj.data = req;
+
+		try {
+			response = await Utils.doPost(obj);
+			if (response.status == "ERROR" && response.subCode == "403") {
+				await PayoutConstants.authorize();
+				obj.headers.Authorization = "Bearer "+PayoutConstants.BearerToken;
+	    		response = Utils.doPost(obj);
+	    	}
+			return resolve(response);
+		} catch (error) {
+			return resolve(error);
+		}
+	});
+}
+
+
+module.exports = {CreateCashgram, GetCashgramStatus, DeactivateCashgram};
