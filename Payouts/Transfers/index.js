@@ -125,44 +125,6 @@ let GetTransfers = function(req) {
 	});
 }
 
-let DeactivateCashgram = function(req) {
-	return new Promise(async (resolve, reject) => {
-		try {
-			await PayoutConstants.checkToken();
-		} catch (error) {
-			return resolve(error);
-		}
-		
-		var requiredParams = ["cashgramId"];
-		var checkParams = Utils.checkKeysInObject(req, requiredParams);
-		if (checkParams != true) {
-			return resolve (checkParams);
-		}
-
-		var path = "/payout/v1/deactivateCashgram";
-		var obj = {};
-		obj.headers = {
-			"Content-Type": "application/json",
-			"Authorization": "Bearer "+PayoutConstants.BearerToken
-		};
-		obj.path = path;
-		obj.hostname = PayoutConstants.MPAEndpoint;
-		obj.data = req;
-
-		try {
-			response = await Utils.doPost(obj);
-			if (response.status == "ERROR" && response.subCode == "403") {
-				await PayoutConstants.authorize();
-				obj.headers.Authorization = "Bearer "+PayoutConstants.BearerToken;
-	    		response = Utils.doPost(obj);
-	    	}
-			return resolve(response);
-		} catch (error) {
-			return resolve(error);
-		}
-	});
-}
-
 let RequestBatchTransfer = function(req) {
 	return new Promise(async (resolve, reject) => {
 		try {
@@ -253,4 +215,5 @@ let GetBatchTransferStatus = function(req) {
 	});
 }
 
-module.exports = {GetBatchTransferStatus, RequestBatchTransfer, DeactivateCashgram, RequestTransfer, GetTransferStatus, GetTransfers}
+
+module.exports = {GetBatchTransferStatus, RequestBatchTransfer, RequestTransfer, GetTransferStatus, GetTransfers}
