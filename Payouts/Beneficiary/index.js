@@ -41,44 +41,6 @@ let Add =  function(req) {
     });
 }
 
-let CreateGroup = function(req) {
-	return new Promise(async (resolve, reject) => {
-		try {
-			await PayoutConstants.checkToken();
-		} catch (error) {
-			return resolve(error);
-		}
-		
-		var requiredParams = ["group"];
-		var checkParams = Utils.checkKeysInObject(req, requiredParams);
-		if (checkParams != true) {
-			return resolve (checkParams);
-		}
-
-		var path = "/payout/v1/createGroup";
-		var obj = {};
-		obj.headers = {
-			"Content-Type": "application/json",
-			"Authorization": "Bearer "+PayoutConstants.BearerToken
-		};
-		obj.path = path;
-		obj.hostname = PayoutConstants.MPAEndpoint;
-		obj.data = req;
-
-		try {
-			response = await Utils.doPost(obj);
-			if (response.status == "ERROR" && response.subCode == "403") {
-				await PayoutConstants.authorize();
-				obj.headers.Authorization = "Bearer "+PayoutConstants.BearerToken;
-	    		response = Utils.doPost(obj);
-	    	}
-			return resolve(response);
-		} catch (error) {
-			return resolve(error);
-		}
-	});
-}
-
 let GetDetails = function(req){
 	return new Promise(async (resolve, reject) => {
 		try {
@@ -199,4 +161,4 @@ let Remove = function(req) {
 	});
 }
 
-module.exports = {Add, CreateGroup, GetDetails, GetBeneId, Remove};
+module.exports = {Add, GetDetails, GetBeneId, Remove};
