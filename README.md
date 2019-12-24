@@ -1,4 +1,4 @@
-# cashfree-sdk
+# cashfree-sdk-nodejs
 
 The official Cashfree SDK for JavaScript, available for Node.js backends
 
@@ -43,7 +43,7 @@ Payouts.Init({
 ### Using Promises
 Every method returns a promise which can be used:
 ```js
-Cashfree.Beneficiary.Add({
+Payouts.Beneficiary.Add({
 	"beneId": "JOHN18012", 
 	"name": "john doe",
 	"email": "johndoe@cashfree.com", 
@@ -64,17 +64,17 @@ Can also be used synchronously using async/await:
 
 ```js
 var syncCall = async function (){
-	var res = await Cashfree.Beneficiary.Add({
-	"beneId": "JOHN18012", 
-	"name": "john doe",
-	"email": "johndoe@cashfree.com", 
-	"phone": "9876543210", 
-	"bankAccount": "00001111222233", 
-	"ifsc": "HDFC0000001", 
-	"address1" : "ABC Street", 
-	"city": "Bangalore", 
-	"state":"Karnataka", 
-	"pincode": "560001"
+	var res = await Payouts.Beneficiary.Add({
+		"beneId": "JOHN18012", 
+		"name": "john doe",
+		"email": "johndoe@cashfree.com", 
+		"phone": "9876543210", 
+		"bankAccount": "00001111222233", 
+		"ifsc": "HDFC0000001", 
+		"address1" : "ABC Street", 
+		"city": "Bangalore", 
+		"state":"Karnataka", 
+		"pincode": "560001"
 	});
 	return res;
 }
