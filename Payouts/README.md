@@ -40,15 +40,6 @@ let Beneficiary = Payouts.Beneficiary;
 	    console.log(d)
     });
     ```
-- [Create Group](https://docs.cashfree.com/docs/payout/guide/#create-beneficiary-group)
-    ```js
-    Beneficiary.CreateGroup({
-    	"group" : "SALES", 
-    	"description": "Sales department group"
-    }).then(function(d){
-    	console.log(d)
-    });	
-    ```
 - [Get Beneficiary Details](https://docs.cashfree.com/docs/payout/guide/#get-beneficiary-details)
     ```js
     Beneficiary.GetDetails({
