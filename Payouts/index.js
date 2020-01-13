@@ -16,9 +16,10 @@ let SetEnv = function(en){
 
 let Init = async function(initObj) {
 	SetEnv(initObj.ENV)
-	if (initObj.ClientID !== undefined && initObj.ClientSecret !== undefined) {
+	if (initObj.ClientID !== undefined && initObj.ClientSecret !== undefined && (initObj.PublicKey !== undefined || initObj.PathToPublicKey !== undefined)) {
 		PayoutConstants.setClientId(initObj.ClientID)
 		PayoutConstants.setClientSecret(initObj.ClientSecret)
+		PayoutConstants.setPublicKey(initObj.PublicKey, initObj.PathToPublicKey)
 	} else {
 		console.log("ClientID or ClientSecret not defined")
 	}
