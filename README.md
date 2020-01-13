@@ -31,7 +31,9 @@ let Payouts = Cashfree.Payouts;
 Payouts.Init({
 	"ENV": "TEST", 
 	"ClientID": "CLIENTID",
-	"ClientSecret": "CLIENTSECRET"
+	"ClientSecret": "CLIENTSECRET",
+	"PathToPublicKey": "Path/to/your/public/key/file",
+    "PublicKey": "ALTERNATIVE TO SPECIFYING PATH (DIRECTLY PASTE PublicKey)"
 });
 ```
 | Option              | Default                       | Description                                                                           |
@@ -39,6 +41,8 @@ Payouts.Init({
 | `ENV`        | `TEST`                        | Environment to be initialized. Can be set to `TEST` or `PRODUCTION` |
 | `ClientID` | `CLIENTID`                             | `ClientID` which can be generated on cashfree dashboard.                  |
 | `ClientSecret`         | `CLIENTSECRET`                        | `ClientSecret` which can be found alongside generated `ClientID`.                        |
+| `PathToPublicKey`         | `UNDEFINED`                        | Either specify the path to your `.pem` public key file or use `PublicKey` Param and pass the key there.                        |
+| `PublicKey`         | `UNDEFINED`                        | Pass your Public Key to this parameter as an alternative to `PathToPublicKey`.                        |
 
 ### Using Promises
 Every method returns a promise which can be used:
