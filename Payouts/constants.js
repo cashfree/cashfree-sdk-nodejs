@@ -4,7 +4,7 @@ const constants = require('constants');
 var fs = require("fs")
 var crypto = require("crypto")
 
-let MPAEndpoint = "https://payout-gamma.cashfree.com";
+let MPAEndpoint = "payout-gamma.cashfree.com";
 let BearerToken = '';
 let Expiry = '';
 let ClientID = '';
@@ -12,7 +12,7 @@ let ClientSecret = '';
 let PublicKey = '';
 
 let initialize = function(env){
-    if(env == "PRODUCTION") this.MPAEndpoint = "https://payout-api.cashfree.com";
+    if(env == "PRODUCTION") this.MPAEndpoint = "payout-api.cashfree.com";
 }
 
 let setClientId = function(v){

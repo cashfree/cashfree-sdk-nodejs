@@ -21,7 +21,7 @@ let Init = async function(initObj) {
 		PayoutConstants.setClientSecret(initObj.ClientSecret)
 		PayoutConstants.setPublicKey(initObj.PublicKey, initObj.PathToPublicKey)
 	} else {
-		console.log("ClientID or ClientSecret not defined")
+		console.log("ClientID or ClientSecret or PublicKey not defined")
 	}
 }
 
