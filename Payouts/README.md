@@ -15,7 +15,9 @@ let Payouts = Cashfree.Payouts;
 Payouts.Init({
     "ENV": "TEST", 
     "ClientID": "CLIENTID",
-    "ClientSecret": "CLIENTSECRET"
+    "ClientSecret": "CLIENTSECRET",
+    "PathToPublicKey": "Path/to/your/public/key/file",
+    "PublicKey": "ALTERNATIVE TO SPECIFYING PATH (DIRECTLY PASTE PublicKey)"
 });
 
 //Initializing Beneficiary
