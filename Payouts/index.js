@@ -23,6 +23,11 @@ let Init = async function(initObj) {
 	} else {
 		console.log("ClientID or ClientSecret or PublicKey not defined")
 	}
+	if (initObj.PublicKey !== undefined || initObj.PathToPublicKey !== undefined) {
+		PayoutConstants.setPublicKey(initObj.PublicKey, initObj.PathToPublicKey)
+	} else {
+		console.log("PublicKey not defined, make sure your IP is whitelisted")
+	}
 }
 
 module.exports = {Beneficiary, SetEnv, Init, Transfers, SelfWithdrawal, GetBalance, Validation, Cashgram};

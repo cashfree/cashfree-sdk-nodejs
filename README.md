@@ -2,7 +2,7 @@ Cashfree SDK's are released in Beta. This is work in progress and we are continu
 
 # cashfree-sdk-nodejs
 
-The official Cashfree SDK for JavaScript, available for Node.js backends
+The official Cashfree SDK for JavaScript, available for Node.js backends. Node version 10.9.0 was used for this SDK.
 
 Get started quickly using Cashfree with the Cashfree SDK for JavaScript in Node.js. The SDK helps take the complexity out of coding by providing JavaScript objects for Cashfree services including Payouts, Payment Gateway, Marketplace and Autocollect. The single, downloadable package includes the Cashfree JavaScript Library and documentation.
 
@@ -20,20 +20,36 @@ npm install https://github.com/cashfree/cashfree-sdk-nodejs
 ### Pre-requisites
   - A [Cashfree Merchant Account](https://merchant.cashfree.com/merchant/sign-up)
   - API keys for different products. You can generate them from your Dashboard
-### IP Whitelisting
-Your IP has to be whitelisted to hit Cashfree's server. For more information please go here.
+### IP Whitelisting and dynamic IPs
+Your IP has to be whitelisted to hit Cashfree's server. Or if you have a dynamic IP please pass in the public key parameter during the init method as shown below. For more information please go [here](https://dev.cashfree.com/development/quickstart#ip-whitelisting).
 ## Usage
 ### Payouts
 The package needs to be configured with your account's secret key which is available in your Cashfree Dashboard.
+###### In case of static IP (Your IP is whitelisted)
 ```js
 const Cashfree = require("cashfree-sdk");
 
 //Initialize Cashfree Payout
 let Payouts = Cashfree.Payouts;
 Payouts.Init({
-	"ENV": "TEST", 
-	"ClientID": "CLIENTID",
-	"ClientSecret": "CLIENTSECRET"
+    "ENV": "TEST", 
+    "ClientID": "CLIENTID",
+    "ClientSecret": "CLIENTSECRET"
+});
+```
+#
+###### In case of dynamic IP you will need a public key to generate a signature(which will be done by sdk itself)
+```js
+const Cashfree = require("cashfree-sdk");
+
+//Initialize Cashfree Payout
+let Payouts = Cashfree.Payouts;
+Payouts.Init({
+    "ENV": "TEST", 
+    "ClientID": "CLIENTID",
+    "ClientSecret": "CLIENTSECRET",
+    "PathToPublicKey": "/path/to/your/public/key/file.pem",
+    "PublicKey": "ALTERNATIVE TO SPECIFYING PATH (DIRECTLY PASTE PublicKey)"
 });
 ```
 | Option              | Default                       | Description                                                                           |
@@ -41,6 +57,8 @@ Payouts.Init({
 | `ENV`        | `TEST`                        | Environment to be initialized. Can be set to `TEST` or `PRODUCTION` |
 | `ClientID` | `CLIENTID`                             | `ClientID` which can be generated on cashfree dashboard.                  |
 | `ClientSecret`         | `CLIENTSECRET`                        | `ClientSecret` which can be found alongside generated `ClientID`.                        |
+| `PathToPublicKey`         | `UNDEFINED`                        | Either specify the path to your `.pem` public key file or use `PublicKey` Param and pass the key there.                        |
+| `PublicKey`         | `UNDEFINED`                        | Pass your Public Key to this parameter as an alternative to `PathToPublicKey`.                        |
 
 ### Using Promises
 Every method returns a promise which can be used:

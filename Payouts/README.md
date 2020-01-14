@@ -1,12 +1,14 @@
 ## Payouts API GUIDE
 
 Please refer to the [Cashfree Docs](https://docs.cashfree.com/docs/)  for the complete API reference.
+Node version 10.9.0 was used for this SDK.
 
 ### Beneficiary
 Contains all APIs related to beneficiary.
 
 ##### Initializing Beneficiary
 #
+###### In case of static IP (Your IP is whitelisted)
 ```js
 const Cashfree = require("cashfree-sdk");
 
@@ -17,7 +19,24 @@ Payouts.Init({
     "ClientID": "CLIENTID",
     "ClientSecret": "CLIENTSECRET"
 });
+```
+#
+###### In case of dynamic IP you will need a public key for signature.
+```js
+const Cashfree = require("cashfree-sdk");
 
+//Initialize Cashfree Payout
+let Payouts = Cashfree.Payouts;
+Payouts.Init({
+    "ENV": "TEST", 
+    "ClientID": "CLIENTID",
+    "ClientSecret": "CLIENTSECRET",
+    "PathToPublicKey": "/path/to/your/public/key/file.pem",
+    "PublicKey": "ALTERNATIVE TO SPECIFYING PATH (DIRECTLY PASTE PublicKey)"
+});
+```
+
+```js
 //Initializing Beneficiary
 let Beneficiary = Payouts.Beneficiary;
 ```
