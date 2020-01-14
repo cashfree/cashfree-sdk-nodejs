@@ -16,12 +16,16 @@ let SetEnv = function(en){
 
 let Init = async function(initObj) {
 	SetEnv(initObj.ENV)
-	if (initObj.ClientID !== undefined && initObj.ClientSecret !== undefined && (initObj.PublicKey !== undefined || initObj.PathToPublicKey !== undefined)) {
+	if (initObj.ClientID !== undefined && initObj.ClientSecret !== undefined) {
 		PayoutConstants.setClientId(initObj.ClientID)
 		PayoutConstants.setClientSecret(initObj.ClientSecret)
+	} else {
+		console.log("ClientID or ClientSecret not defined")
+	}
+	if (initObj.PublicKey !== undefined || initObj.PathToPublicKey !== undefined) {
 		PayoutConstants.setPublicKey(initObj.PublicKey, initObj.PathToPublicKey)
 	} else {
-		console.log("ClientID or ClientSecret or PublicKey not defined")
+		console.log("PublicKey not defined, make sure your IP is whitelisted")
 	}
 }
 
