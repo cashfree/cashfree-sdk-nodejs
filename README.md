@@ -1,6 +1,6 @@
 # cashfree-sdk-nodejs
 
-The official Cashfree SDK for JavaScript, available for Node.js backends
+The official Cashfree SDK for JavaScript, available for Node.js backends. Node version 10.9.0 was used for this SDK.
 
 Get started quickly using Cashfree with the Cashfree SDK for JavaScript in Node.js. The SDK helps take the complexity out of coding by providing JavaScript objects for Cashfree services including Payouts, Payment Gateway, Marketplace and Autocollect. The single, downloadable package includes the Cashfree JavaScript Library and documentation.
 

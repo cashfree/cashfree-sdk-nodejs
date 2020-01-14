@@ -1,6 +1,7 @@
 ## Payouts API GUIDE
 
 Please refer to the [Cashfree Docs](https://docs.cashfree.com/docs/)  for the complete API reference.
+Node version 10.9.0 was used for this SDK.
 
 ### Beneficiary
 Contains all APIs related to beneficiary.
