@@ -6,6 +6,7 @@ let Transfers = require('./Transfers')
 let Validation = require('./Validation')
 let Cashgram = require('./Cashgram')
 let PayoutConstants = require('./constants')
+let {VerifySignature} = require('./SignatureVerification')
 
 
 let ENV = "TEST";
@@ -29,4 +30,4 @@ let Init = async function(initObj) {
 	}
 }
 
-module.exports = {Beneficiary, SetEnv, Init, Transfers, SelfWithdrawal, GetBalance, Validation, Cashgram};
+module.exports = {Beneficiary, SetEnv, Init, Transfers, SelfWithdrawal, GetBalance, Validation, Cashgram, VerifySignature};
