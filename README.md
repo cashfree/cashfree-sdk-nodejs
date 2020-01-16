@@ -47,7 +47,7 @@ Payouts.Init({
     "ClientID": "CLIENTID",
     "ClientSecret": "CLIENTSECRET",
     "PathToPublicKey": "/path/to/your/public/key/file.pem",
-    "PublicKey": "ALTERNATIVE TO SPECIFYING PATH (DIRECTLY PASTE PublicKey)"
+    //"PublicKey": "ALTERNATIVE TO SPECIFYING PATH (DIRECTLY PASTE PublicKey)"
 });
 ```
 | Option              | Default                       | Description                                                                           |
