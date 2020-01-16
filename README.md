@@ -1,5 +1,3 @@
-Cashfree SDK's are released in Beta. This is work in progress and we are continuously working on improving various aspects of it. It is released as learning aid and example kit for the API integrators. This is not recommended by Cashfree for direct use in production code. Please report any bugs to Cashfree at techsupport@cashfree.com.
-
 # cashfree-sdk-nodejs
 
 The official Cashfree SDK for JavaScript, available for Node.js backends. Node version 10.9.0 was used for this SDK.
@@ -55,10 +53,23 @@ Payouts.Init({
 | Option              | Default                       | Description                                                                           |
 | ------------------- | ----------------------------- | ------------------------------------------------------------------------------------- |
 | `ENV`        | `TEST`                        | Environment to be initialized. Can be set to `TEST` or `PRODUCTION` |
-| `ClientID` | `CLIENTID`                             | `ClientID` which can be generated on cashfree dashboard.                  |
-| `ClientSecret`         | `CLIENTSECRET`                        | `ClientSecret` which can be found alongside generated `ClientID`.                        |
-| `PathToPublicKey`         | `UNDEFINED`                        | Either specify the path to your `.pem` public key file or use `PublicKey` Param and pass the key there.                        |
-| `PublicKey`         | `UNDEFINED`                        | Pass your Public Key to this parameter as an alternative to `PathToPublicKey`.                        |
+| `ClientID` | ``                             | `ClientID` which can be generated on cashfree dashboard.                  |
+| `ClientSecret`         | ``                        | `ClientSecret` which can be found alongside generated `ClientID`.                        |
+| `PathToPublicKey`         | ``                        | Either specify the path to your `.pem` public key file or use `PublicKey` Param and pass the key there.                        |
+| `PublicKey`         | ``                        | Pass your Public Key to this parameter as an alternative to `PathToPublicKey`.                        |
+
+
+### WebHook Verification
+
+To verify the webhook received from Cashfree for different events and accept the webhook only when it returns `true`.
+
+#### Usage
+Pass the webhook received along with the payload type.
+
+```js
+Cashfree.Payouts.VerifySignature(webhookPostDataJson) // returns true or false
+```
+
 
 ### Using Promises
 Every method returns a promise which can be used:
