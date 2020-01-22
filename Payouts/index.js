@@ -26,7 +26,7 @@ let Init = async function(initObj) {
     if (initObj.PublicKey !== undefined || initObj.PathToPublicKey !== undefined) {
         PayoutConstants.setPublicKey(initObj.PublicKey, initObj.PathToPublicKey)
     } else {
-        console.log("PublicKey not defined, make sure your IP is whitelisted")
+        console.log("Cashfree: PublicKey not defined, make sure your IP is whitelisted")
     }
 }
 
