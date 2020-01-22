@@ -4,7 +4,7 @@ let ENV = "TEST";
 
 let SetEnv = function(en){
     if(en) this.ENV = en;
-    console.log(this.ENV);
+    console.log("Cashfree: " + this.ENV);
     PayoutConstants.initialize(this.ENV)
 }
 
