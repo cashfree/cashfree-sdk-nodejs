@@ -16,29 +16,18 @@ let SetEnv = function(en){
 }
 
 let Init = async function(initObj) {
-	SetEnv(initObj.ENV)
-	if (initObj.ClientID !== undefined && initObj.ClientSecret !== undefined && (initObj.PublicKey !== undefined || initObj.PathToPublicKey !== undefined)) {
-		PayoutConstants.setClientId(initObj.ClientID)
-		PayoutConstants.setClientSecret(initObj.ClientSecret)
-		PayoutConstants.setPublicKey(initObj.PublicKey, initObj.PathToPublicKey)
-	} else {
-		console.log("ClientID or ClientSecret or PublicKey not defined")
-	}
-	if (initObj.PublicKey !== undefined || initObj.PathToPublicKey !== undefined) {
-		PayoutConstants.setPublicKey(initObj.PublicKey, initObj.PathToPublicKey)
-	} else {
-		console.log("PublicKey not defined, make sure your IP is whitelisted")
-	}
-	if (initObj.PublicKey !== undefined || initObj.PathToPublicKey !== undefined) {
-		PayoutConstants.setPublicKey(initObj.PublicKey, initObj.PathToPublicKey)
-	} else {
-		console.log("PublicKey not defined, make sure your IP is whitelisted")
-	}
-	if (initObj.PublicKey !== undefined || initObj.PathToPublicKey !== undefined) {
-		PayoutConstants.setPublicKey(initObj.PublicKey, initObj.PathToPublicKey)
-	} else {
-		console.log("PublicKey not defined, make sure your IP is whitelisted")
-	}
+    SetEnv(initObj.ENV)
+    if (initObj.ClientID !== undefined && initObj.ClientSecret !== undefined) {
+        PayoutConstants.setClientId(initObj.ClientID)
+        PayoutConstants.setClientSecret(initObj.ClientSecret)
+    } else {
+        console.log("ClientID or ClientSecret not defined")
+    }
+    if (initObj.PublicKey !== undefined || initObj.PathToPublicKey !== undefined) {
+        PayoutConstants.setPublicKey(initObj.PublicKey, initObj.PathToPublicKey)
+    } else {
+        console.log("PublicKey not defined, make sure your IP is whitelisted")
+    }
 }
 
 module.exports = {Beneficiary, SetEnv, Init, Transfers, SelfWithdrawal, GetBalance, Validation, Cashgram, VerifySignature};
