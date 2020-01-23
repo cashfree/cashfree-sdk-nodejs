@@ -32,7 +32,7 @@ let setPublicKey = function(key, path) {
 } 
 
 let generateCertificate = function() {
-	if (this.PublicKey !== '') {
+	if (!this.PublicKey) {
 		return null;
 	}
     var curTimeStamp = Date.now()/1000;
@@ -45,7 +45,6 @@ let generateCertificate = function() {
     return encrypted.toString("base64");
 }
 
-//"X-Cf-Signature": certificate
 let authorize =  async function(){
 	var path = "/payout/v1/authorize";
 	var data = {};
@@ -53,6 +52,7 @@ let authorize =  async function(){
 
 	try {
 		var certificate = this.generateCertificate();
+
 	} catch(error) {
 		throw {
 			"status": "ERROR", 
@@ -94,7 +94,7 @@ let checkToken = async function(){
 			throw error;
 		}
 	}
-	if (response.status = "ERROR") {
+	if (response.status === "ERROR") {
 		throw response;
 	}
 	return response;
