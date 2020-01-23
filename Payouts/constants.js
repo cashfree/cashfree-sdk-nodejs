@@ -32,6 +32,9 @@ let setPublicKey = function(key, path) {
 } 
 
 let generateCertificate = function() {
+	if (this.PublicKey !== '') {
+		return null;
+	}
     var curTimeStamp = Date.now()/1000;
     var message = this.ClientID + "." + curTimeStamp.toString();
     let buffer = new Buffer(message);
@@ -42,10 +45,12 @@ let generateCertificate = function() {
     return encrypted.toString("base64");
 }
 
+//"X-Cf-Signature": certificate
 let authorize =  async function(){
 	var path = "/payout/v1/authorize";
 	var data = {};
 	var obj = {};
+
 	try {
 		var certificate = this.generateCertificate();
 	} catch(error) {
@@ -57,9 +62,12 @@ let authorize =  async function(){
 	obj.headers = {
         "Content-Type": 'application/json',
         "X-Client-Id": this.ClientID,
-        "X-Client-Secret": this.ClientSecret,
-        "X-Cf-Signature": certificate
+        "X-Client-Secret": this.ClientSecret
 	};
+	if (this.PublicKey) {
+		obj.headers["X-Client-Secret"] = certificate;
+	}
+
 	obj.path = path;
 	obj.hostname = this.MPAEndpoint;
 	obj.data = data;
