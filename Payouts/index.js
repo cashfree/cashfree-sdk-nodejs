@@ -17,16 +17,16 @@ let SetEnv = function(en){
 
 let Init = async function(initObj) {
     SetEnv(initObj.ENV)
-    if (initObj.ClientID !== undefined && initObj.ClientSecret !== undefined) {
-        PayoutConstants.setClientId(initObj.ClientID)
+    if (!initObj.ClientID || !initObj.ClientSecret) {
+    	console.log("Cashfree: ClientID or ClientSecret not defined")
+    } else {
+    	PayoutConstants.setClientId(initObj.ClientID)
         PayoutConstants.setClientSecret(initObj.ClientSecret)
-    } else {
-        console.log("Cashfree: ClientID or ClientSecret not defined")
     }
-    if (initObj.PublicKey !== undefined || initObj.PathToPublicKey !== undefined) {
-        PayoutConstants.setPublicKey(initObj.PublicKey, initObj.PathToPublicKey)
+    if (!initObj.PublicKey && !initObj.PathToPublicKey) {
+    	console.log("Cashfree: PublicKey not defined, make sure your IP is whitelisted")
     } else {
-        console.log("Cashfree: PublicKey not defined, make sure your IP is whitelisted")
+        PayoutConstants.setPublicKey(initObj.PublicKey, initObj.PathToPublicKey)
     }
 }
 
