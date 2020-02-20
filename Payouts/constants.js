@@ -65,7 +65,7 @@ let authorize =  async function(){
         "X-Client-Secret": this.ClientSecret
 	};
 	if (this.PublicKey) {
-		obj.headers["X-Client-Secret"] = certificate;
+		obj.headers["X-Cf-Signature"] = certificate;
 	}
 
 	obj.path = path;
