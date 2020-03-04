@@ -12,7 +12,7 @@ Please refer to the [Cashfree Docs](https://docs.cashfree.com/docs/)  for the co
 
 The preferred way to install the Cashfree SDK for Node.js is to use the [npm](http://npmjs.org) package manager for Node.js. Simply type the following into a terminal window:
 ```sh
-npm install https://github.com/cashfree/cashfree-sdk-nodejs
+npm i cashfree-sdk
 ```
 
 ## Getting Started
