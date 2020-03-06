@@ -104,18 +104,14 @@ const Orders = PG.Orders;
 Contains all APIs related to Transactions.
 ##### Initializing Transactions
 #
+
 ```js
 const PG = require('cashfree-sdk').PG;
+```
 
-// Initialize Cashfree Payment Gateway
-PG.Init({
-    env: '<ENVIRONMENT>',
-    apiVersion: '<API_VERSION>',
-    appId: '<YOUR_APP_ID>',
-    secretKey: '<YOUR_SECRET_KEY>',
-});
+> Initialize PG with api keys and environment [see example](#initialize-pg)
 
-// Initializing Transactions
+```js
 const Transactions = PG.Transactions;
 ```
 
@@ -135,18 +131,14 @@ const Transactions = PG.Transactions;
 Contains all APIs related to Refunds.
 ##### Initializing Refunds
 #
+
 ```js
 const PG = require('cashfree-sdk').PG;
+```
 
-// Initialize Cashfree Payment Gateway
-PG.Init({
-    env: '<ENVIRONMENT>',
-    apiVersion: '<API_VERSION>',
-    appId: '<YOUR_APP_ID>',
-    secretKey: '<YOUR_SECRET_KEY>',
-});
+> Initialize PG with api keys and environment [see example](#initialize-pg)
 
-// Initializing Refunds
+```js
 const Refunds = PG.Refunds;
 ```
 
@@ -185,18 +177,14 @@ const Refunds = PG.Refunds;
 Contains all APIs related to Settlements.
 ##### Initializing Settlements
 #
+
 ```js
 const PG = require('cashfree-sdk').PG;
+```
 
-// Initialize Cashfree Payment Gateway
-PG.Init({
-    env: '<ENVIRONMENT>',
-    apiVersion: '<API_VERSION>',
-    appId: '<YOUR_APP_ID>',
-    secretKey: '<YOUR_SECRET_KEY>',
-});
+> Initialize PG with api keys and environment [see example](#initialize-pg)
 
-// Initializing Refunds
+```js
 const Settlements = PG.Settlements;
 ```
 
