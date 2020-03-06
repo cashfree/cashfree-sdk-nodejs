@@ -8,7 +8,7 @@ const getPGConfig = () => {
     return { ...pgConfig };
 };
 
-const setEnvironment = options => {
+const Init = options => {
     // validate the options object
     const requiredKeys = ['env', 'apiVersion', 'appId', 'secretKey'];
     const validationError = checkKeysInObject(options, requiredKeys);
@@ -30,5 +30,5 @@ const setEnvironment = options => {
 
 module.exports = {
     getPGConfig,
-    setEnvironment,
+    Init,
 }
