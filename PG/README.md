@@ -26,6 +26,44 @@ PG.Init({
 #
 
 
+## Response Format
+
+The response format for all requests is a JSON object.
+
+Whether a request succeeded is indicated by the HTTP status code. A 2xx status code indicates success, whereas a 4xx status code indicates failure. When a request fails, the response body is still JSON, but always contains the fields `status` and `reason` (only if status is an error) which you can inspect to use for debugging. For example, trying to save an object with invalid keys will return the message:
+
+| Parameter    | Description                                    |
+| :------------|:----------------------------------------------:|
+| status       | status of API call. Values are - OK and ERROR  |
+| reason       | reason of failure when status is ERROR         |
+
+## Example
+### Using Promises
+
+Every method returns a promise which can be used:
+
+```js
+    PG.Orders.GetLink({
+        orderId: '<ORDER_ID>',
+    }).then(data => console.log(data)).catch(error => console.error(error));
+```
+
+### Using Async/Await
+
+Can also be used synchronously using async/await:
+
+```js
+    async function getOrderLink() {
+        try {
+            const data = await PG.Orders.GetLink({ orderId: '<ORDER_ID>' });
+            console.log(data);
+        } catch (e) {
+            console.error(e);
+        }
+    } 
+```
+#
+
 ### Credentials Verify
 Contains the API to verify Credentials.
 #
@@ -38,7 +76,7 @@ const PG = require('cashfree-sdk').PG;
         env: '<ENVIRONMENT>', // must be one of [TEST / PRODUCTION]
         appId: '<YOUR_APP_ID>',
         secretKey: '<YOUR_SECRET_KEY>',
-    }).then(data => console.log(data)).catch(error => console.log(error));
+    }).then(data => console.log(data)).catch(error => console.error(error));
     ```
 
 ### Orders
@@ -73,31 +111,31 @@ const Orders = PG.Orders;
         notifyUrl: 'https://example.com/notify',
         paymentModes: '',
         pc: '',
-    }).then(data => console.log(data)).catch(error => console.log(error));
+    }).then(data => console.log(data)).catch(error => console.error(error));
     ```
 - [Get Link](https://docs.cashfree.com/docs/rest/guide/#get-link)
     ```js
     Orders.GetLink({
         orderId: '<ORDER_ID>', // required
-    }).then(data => console.log(data)).catch(error => console.log(error));;
+    }).then(data => console.log(data)).catch(error => console.error(error));
     ```
 - [Get Details](https://docs.cashfree.com/docs/rest/guide/#get-details)
     ```js
     Orders.GetDetails({
         orderId: '<ORDER_ID>', // required
-    }).then(data => console.log(data)).catch(error => console.log(error));
+    }).then(data => console.log(data)).catch(error => console.error(error));
     ```
 - [Get Status](https://docs.cashfree.com/docs/rest/guide/#get-status)
     ```js
     Orders.GetStatus({
         orderId: '<ORDER_ID>', // required
-    }).then(data => console.log(data)).catch(error => console.log(error));
+    }).then(data => console.log(data)).catch(error => console.error(error));
     ```
 - [Trigger Payment Email](https://docs.cashfree.com/docs/rest/guide/#trigger-payment-email)
     ```js
     Orders.TriggerPaymentEmail({
         orderId: '<ORDER_ID>', // required
-    }).then(data => console.log(data)).catch(error => console.log(error));
+    }).then(data => console.log(data)).catch(error => console.error(error));
     ```
     
 ### Transactions
@@ -123,7 +161,7 @@ const Transactions = PG.Transactions;
         txStatus: 'SUCCESS',
         lastId: '',
         count: 2,
-    }).then(data => console.log(data)).catch(error => console.log(error));
+    }).then(data => console.log(data)).catch(error => console.error(error));
     ```
 
     
@@ -154,7 +192,7 @@ const Refunds = PG.Refunds;
         mode: '',
         accountNo: '',
         ifsc: '',
-    }).then(data => console.log(data)).catch(error => console.log(error));
+    }).then(data => console.log(data)).catch(error => console.error(error));
     ```
 - [Fetch All Refunds](https://docs.cashfree.com/docs/rest/guide/#fetch-all-refunds)
     ```js
@@ -163,14 +201,14 @@ const Refunds = PG.Refunds;
         endDate: '2016-04-27', // required
         lastId: '',
         count: 2,
-    }).then(data => console.log(data)).catch(error => console.log(error));
+    }).then(data => console.log(data)).catch(error => console.error(error));
     ```
 - [Fetch Single Refund](https://docs.cashfree.com/docs/rest/guide/#fetch-single-refund)
     ```js
     Refunds.FetchSingleRefund({
         refundId: '1',
         merchantRefundId: '1', // Provide refundId or merchantRefundId to get refund status
-    }).then(data => console.log(data)).catch(error => console.log(error));
+    }).then(data => console.log(data)).catch(error => console.error(error));
     ```
 
 ### Settlements
@@ -195,7 +233,7 @@ const Settlements = PG.Settlements;
         endDate: '2016-04-30', // required
         lastId: '',
         count: 2,
-    }).then(data => console.log(data)).catch(error => console.log(error));
+    }).then(data => console.log(data)).catch(error => console.error(error));
     ```
 - [Fetch Single Settlement](https://docs.cashfree.com/docs/rest/guide/#fetch-single-settlement)
     ```js
@@ -203,5 +241,5 @@ const Settlements = PG.Settlements;
         settlementId: '20', // required
         lastId: '',
         count: 2,
-    }).then(data => console.log(data)).catch(error => console.log(error));
+    }).then(data => console.log(data)).catch(error => console.error(error));
     ```
