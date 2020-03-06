@@ -1,0 +1,18 @@
+module.exports = {
+    TEST_BASE_URL: 'test.cashfree.com',
+    PROD_BASE_URL: 'api.cashfree.com',
+    PG_REL_URL: '/api',
+    PG_API_VERSION: '/v1',
+    ORDER_CREATE_REL_URL: '/order/create',
+    ORDER_GET_LINK_REL_URL: '/order/info/link',
+    ORDER_GET_DETAILS_REL_URL: '/order/info',
+    ORDER_GET_STATUS_REL_URL: '/order/info/status',
+    ORDER_EMAIL_REL_URL: '/order/email',
+    TRANSACTIONS_REL_URL: '/transactions',
+    REFUNDS_REL_URL: '/refunds',
+    ORDER_REFUND_REL_URL: '/order/refund',
+    REFUND_STATUS_REL_URL: '/refundStatus',
+    SETTLEMENTS_REL_URL: '/settlements',
+    SETTLEMENT_REL_URL: '/settlement',
+    CREDENTIALS_VERIFY_REL_URL: '/credentials/verify',
+};

@@ -1,5 +1,6 @@
 //Cashfree Main
-let Payouts = require('./Payouts')
+let Payouts = require('./Payouts');
+const PG = require('./PG');
 let ENV = "TEST";
 
 let SetEnv = function(en){

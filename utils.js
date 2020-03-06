@@ -16,39 +16,45 @@ let checkKeysInObject = function(req, keys) {
     else return {
         "status": "ERROR",
         "subCode": "412",
-        "message": notPresent.join(",") + " missing in your request"
+        "message": notPresent.join(", ") + " is/are missing in your request"
     }
 }
 
-let doPost = function(obj) {
+
+const doPost = function(obj) {
     const options = {
         hostname: obj.hostname,
         port: 443,
         path: obj.path,
         method: 'POST',
         headers: obj.headers
-    }
-    var response = '';
-    var token = null
+    };
+
+    const contentType = obj.headers['Content-Type'] || obj.headers['content-type'];
+    const postData = ['application/x-www-form-urlencoded'].includes(contentType) ?
+        qs.stringify(obj.data) : JSON.stringify(obj.data);
+
+    let response = '';
 
     return new Promise((resolve, reject) => {
         const req = https.request(options, (res) => {
             // console.log(`statusCode: ${res.statusCode}`)
             res.on('data', (d) => {
                 response += d;
-            })
+            });
             res.on('end', (d) => {
-                resolve(JSON.parse(response));
-            })
-        })
+                return resolve(JSON.parse(response));
+            });
+        });
 
         req.on('error', (error) => {
-            reject(error)
-        })
-        req.write(JSON.stringify(obj.data))
-        req.end()
-    })
+            return reject(error)
+        });
+        req.write(postData);
+        req.end();
+    });
 }
+
 
 let doGet = function(obj){
     const options = {

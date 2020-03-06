@@ -114,7 +114,10 @@ syncCall();
 ```
 - For more information about the APIs go to [Payouts](Payouts).
 - Complete list of [APIs](https://docs.cashfree.com/docs/payout/guide/#fetch-beneficiary-id).
+
+### Payment Gateway
+- [Documentation and API](./PG/README.md)
+
 ### TODO
-- #### PG
 - #### Market Place
 - #### Autocollect
