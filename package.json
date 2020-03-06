@@ -1,11 +1,26 @@
 {
   "name": "cashfree-sdk",
-  "version": "1.0.5",
+  "version": "0.1.1",
   "description": "This module contains all methods to help you integrate cashfree's payout solution",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Cashfree",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cashfree/cashfree-sdk-nodejs.git"
+  },
+  "keywords": [
+    "cashfree",
+    "node",
+    "sdk",
+    "payment",
+    "gateway"
+  ],
+  "bugs": {
+    "url": "https://github.com/cashfree/cashfree-sdk-nodejs/issues"
+  },
+  "homepage": "https://github.com/cashfree/cashfree-sdk-nodejs#readme"
 }
