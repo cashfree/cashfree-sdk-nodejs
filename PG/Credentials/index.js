@@ -7,7 +7,7 @@ const {
     CREDENTIALS_VERIFY_REL_URL,
 } = require('../constants');
 
-const verifyCredentials = async (data = {}) => {
+const VerifyCredentials = async (data = {}) => {
     try {
         // make request
         const requiredKeys = ['env', 'appId', 'secretKey'];
@@ -37,5 +37,5 @@ const verifyCredentials = async (data = {}) => {
 }
 
 module.exports = { 
-    verifyCredentials,
+    VerifyCredentials,
 };

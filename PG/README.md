@@ -26,7 +26,7 @@ PG.Init({
 #
 
 
-### Credentials Verification
+### Credentials Verify
 Contains the API to verify Credentials.
 #
 ```js
@@ -34,7 +34,7 @@ const PG = require('cashfree-sdk').PG;
 ```
 - [Verify Credentials](https://docs.cashfree.com/docs/rest/guide/#credentials-verify-api)
     ```js
-    PG.verifyCredentials({
+    PG.VerifyCredentials({
         env: '<ENVIRONMENT>', // must be one of [TEST / PRODUCTION]
         appId: '<YOUR_APP_ID>',
         secretKey: '<YOUR_SECRET_KEY>',
