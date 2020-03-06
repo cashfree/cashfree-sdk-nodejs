@@ -15,4 +15,4 @@ let Init = function(initObj){
 	}
 }
 
-module.exports = {Payouts, SetEnv, Init};
+module.exports = { Payouts, SetEnv, Init, PG };
