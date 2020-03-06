@@ -1,5 +1,6 @@
  
-var https = require("https")
+var https = require("https");
+const qs = require('querystring');
 
 
 let checkKeysInObject = function(req, keys) {
