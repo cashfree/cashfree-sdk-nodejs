@@ -40,6 +40,44 @@ let RequestTransfer = function(req) {
 	});
 }
 
+let RequestAsyncTransfer = function(req) {
+	return new Promise(async (resolve, reject) => {
+		try {
+			await PayoutConstants.checkToken();
+		} catch (error) {
+			return resolve(error);
+		}
+		
+		var requiredParams = ["beneId", "amount", "transferId"];
+		var checkParams = Utils.checkKeysInObject(req, requiredParams);
+		if (checkParams != true) {
+			return resolve (checkParams);
+		}
+
+		var path = "/payout/v1/requestAsyncTransfer";
+		var obj = {};
+		obj.headers = {
+			"Content-Type": "application/json",
+			"Authorization": "Bearer "+PayoutConstants.BearerToken
+		};
+		obj.path = path;
+		obj.hostname = PayoutConstants.MPAEndpoint;
+		obj.data = req;
+
+		try {
+			response = await Utils.doPost(obj);
+			if (response.status == "ERROR" && response.subCode == "403") {
+				await PayoutConstants.authorize();
+				obj.headers.Authorization = "Bearer "+PayoutConstants.BearerToken;
+	    		response = Utils.doPost(obj);
+	    	}
+			return resolve(response);
+		} catch (error) {
+			return resolve(error);
+		}
+	});
+}
+
 let GetTransferStatus = function(req) {
 	return new Promise(async (resolve, reject) => {
 		try {
@@ -216,4 +254,4 @@ let GetBatchTransferStatus = function(req) {
 }
 
 
-module.exports = {GetBatchTransferStatus, RequestBatchTransfer, RequestTransfer, GetTransferStatus, GetTransfers}
+module.exports = {GetBatchTransferStatus, RequestBatchTransfer, RequestTransfer, GetTransferStatus, GetTransfers, RequestAsyncTransfer}
