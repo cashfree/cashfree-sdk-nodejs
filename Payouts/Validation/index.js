@@ -46,6 +46,91 @@ let ValidateBankDetails = function(req) {//validateBankDetails (validation folde
 	});
 }
 
+let ValidateBankDetailsAsync = function(req) {//validateBankDetails (validation folder)
+	return new Promise(async (resolve, reject) => {
+		try {
+			await PayoutConstants.checkToken();
+		} catch (error) {
+			return resolve(error);
+		}
+
+		var requiredParams = ["name", "phone", "bankAccount", "ifsc"];
+		var checkParams = Utils.checkKeysInObject(req, requiredParams);
+		if (checkParams != true) {
+			return resolve (checkParams);
+		}
+
+		var params = "?"
+		params += "name="+req.name;
+		params += "&phone="+req.phone;
+		params += "&bankAccount="+req.bankAccount;
+		params += "&ifsc="+req.ifsc;
+
+		var path = "/payout/v1/asyncValidation/bankDetails"+params;
+		var obj = {};
+		obj.headers = {
+			"Content-Type": "application/json",
+			"Authorization": "Bearer "+PayoutConstants.BearerToken
+		};
+		obj.path = path;
+		obj.hostname = PayoutConstants.MPAEndpoint;
+		obj.data = req;
+
+		try {
+			response = await Utils.doGet(obj);
+			if (response.status == "ERROR" && response.subCode == "403") {
+				await PayoutConstants.authorize();
+				obj.headers.Authorization = "Bearer "+PayoutConstants.BearerToken;
+	    		response = Utils.doGet(obj);
+	    	}
+			return resolve(response);
+		} catch (error) {
+			return resolve(error);
+		}
+	});
+}
+
+let BankValidationStatus = function(req) {//validateBankDetails (validation folder)
+	return new Promise(async (resolve, reject) => {
+		try {
+			await PayoutConstants.checkToken();
+		} catch (error) {
+			return resolve(error);
+		}
+
+		var requiredParams = ["bvRefId"];
+		var checkParams = Utils.checkKeysInObject(req, requiredParams);
+		if (checkParams != true) {
+			return resolve (checkParams);
+		}
+
+		var params = "?"
+		params += "bvRefId="+req.bvRefId;
+
+		var path = "/payout/v1/getValidationStatus/bank"+params;
+		var obj = {};
+		obj.headers = {
+			"Content-Type": "application/json",
+			"Authorization": "Bearer "+PayoutConstants.BearerToken
+		};
+		obj.path = path;
+		obj.hostname = PayoutConstants.MPAEndpoint;
+		obj.data = req;
+
+		try {
+			response = await Utils.doGet(obj);
+			if (response.status == "ERROR" && response.subCode == "403") {
+				await PayoutConstants.authorize();
+				obj.headers.Authorization = "Bearer "+PayoutConstants.BearerToken;
+	    		response = Utils.doGet(obj);
+	    	}
+			return resolve(response);
+		} catch (error) {
+			return resolve(error);
+		}
+	});
+}
+
 let ValidateUPIDetails = function(req) { //validate
 	return new Promise(async (resolve, reject) => {
 		try {
@@ -179,4 +264,4 @@ let GetBulkValidationStatus = function(req) {
 	});
 }
 
-module.exports = {ValidateBankDetails, ValidateUPIDetails, ValidateBulkBankActivation, GetBulkValidationStatus};
+module.exports = {ValidateBankDetails, ValidateUPIDetails, ValidateBulkBankActivation, GetBulkValidationStatus, ValidateBankDetailsAsync, BankValidationStatus};
