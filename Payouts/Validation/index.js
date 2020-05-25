@@ -17,10 +17,10 @@ let ValidateBankDetails = function(req) {//validateBankDetails (validation folde
 		}
 
 		var params = "?"
-		params += "name="+req.name;
-		params += "&phone="+req.phone;
-		params += "&bankAccount="+req.bankAccount;
-		params += "&ifsc="+req.ifsc;
+		params += "name="+encodeURIComponent(req.name);
+		params += "&phone="+encodeURIComponent(req.phone);
+		params += "&bankAccount="+encodeURIComponent(req.bankAccount);
+		params += "&ifsc="+encodeURIComponent(req.ifsc);
 
 		var path = "/payout/v1/validation/bankDetails"+params;
 		var obj = {};
@@ -61,10 +61,10 @@ let ValidateBankDetailsAsync = function(req) {//validateBankDetails (validation 
 		}
 
 		var params = "?"
-		params += "name="+req.name;
-		params += "&phone="+req.phone;
-		params += "&bankAccount="+req.bankAccount;
-		params += "&ifsc="+req.ifsc;
+		params += "name="+encodeURIComponent(req.name);
+		params += "&phone="+encodeURIComponent(req.phone);
+		params += "&bankAccount="+encodeURIComponent(req.bankAccount);
+		params += "&ifsc="+encodeURIComponent(req.ifsc);
 
 		var path = "/payout/v1/asyncValidation/bankDetails"+params;
 		var obj = {};
@@ -105,7 +105,7 @@ let BankValidationStatus = function(req) {//validateBankDetails (validation fold
 		}
 
 		var params = "?"
-		params += "bvRefId="+req.bvRefId;
+		params += "bvRefId="+encodeURIComponent(req.bvRefId);
 
 		var path = "/payout/v1/getValidationStatus/bank"+params;
 		var obj = {};
@@ -145,8 +145,8 @@ let ValidateUPIDetails = function(req) { //validate
 			return resolve (checkParams);
 		}
 		var params = "?"
-		params += "name="+req.name
-		params += "&vpa="+req.vpa;
+		params += "name="+encodeURIComponent(req.name);
+		params += "&vpa="+encodeURIComponent(req.vpa);
 
 		var path = "/payout/v1/validation/upiDetails?vpa="+req.vpa+"&name="+req.name;
 		var obj = {};
@@ -234,10 +234,10 @@ let GetBulkValidationStatus = function(req) {
 		params += "batchTransferId="+req.batchTransferId;
 
 		if (req.bankAccount) {
-			params += "&bankAccount="+req.bankAccount;
+			params += "&bankAccount="+encodeURIComponent(req.bankAccount);
 		}
 		if (req.ifsc) {
-			params += "&ifsc="+req.ifsc;
+			params += "&ifsc="+encodeURIComponent(req.ifsc);
 		}
 
 		var path = "/payout/v1/getBulkValidationStatus"+params;

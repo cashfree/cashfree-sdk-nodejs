@@ -88,11 +88,11 @@ let GetTransferStatus = function(req) {
 
 		var params = "?";
 		if (req.referenceId) {
-			params += "referenceId="+req.referenceId;
+			params += "referenceId="+encodeURIComponent(req.referenceId);
 		}
 		if (req.transferId) {
 			if (params != "?") params += "&"
-			params += "transferId="+req.transferId;
+			params += "transferId="+encodeURIComponent(req.transferId);
 		}
 
 		var path = "/payout/v1/getTransferStatus"+params;
@@ -128,15 +128,15 @@ let GetTransfers = function(req) {
 		}
 		var params = "?"
 		if (req.maxReturn) {
-			params += "maxReturn="+req.maxReturn;
+			params += "maxReturn="+encodeURIComponent(req.maxReturn);
 		}
 		if (req.lastReturnId) {
 			if (params != "?") params += "&"
-			params += "lastReturnId="+req.lastReturnId;
+			params += "lastReturnId="+encodeURIComponent(req.lastReturnId);
 		}
 		if (req.date) {
 			if (params != "?") params += "&"
-			params += "date="+req.date;
+			params += "date="+encodeURIComponent(req.date);
 		}
 		var path = "/payout/v1/getTransfers"+params;
 		console.log(path);
@@ -227,7 +227,7 @@ let GetBatchTransferStatus = function(req) {
 		}
 
 		var params = "?";
-		params += "batchTransferId="+req.batchTransferId;
+		params += "batchTransferId="+encodeURIComponent(req.batchTransferId);
 
 		var path = "/payout/v1/getBatchTransferStatus"+params;
 		var obj = {};

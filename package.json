@@ -1,6 +1,6 @@
 {
   "name": "cashfree-sdk",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "This module contains all methods to help you integrate cashfree's payout solution",
   "main": "index.js",
   "scripts": {

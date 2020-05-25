@@ -55,7 +55,7 @@ let GetCashgramStatus = function(req) {
 		}
 
 		var params = "?";
-		params += "cashgramId="+req.cashgramId;
+		params += "cashgramId="+encodeURIComponent(req.cashgramId);
 
 		var path = "/payout/v1/getCashgramStatus"+params;
 		var obj = {};
