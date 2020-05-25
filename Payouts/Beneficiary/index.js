@@ -55,7 +55,7 @@ let GetDetails = function(req){
 			return resolve (checkParams);
 		}
 
-		var path = "/payout/v1/getBeneficiary/"+req.beneId;
+		var path = "/payout/v1/getBeneficiary/"+encodeURIComponent(req.beneId);
 		var obj = {};
 		obj.headers = {
 			"Content-Type": "application/json",
@@ -95,8 +95,8 @@ let GetBeneId = function(req){
 		}
 
 		var params = "?";
-		params += "bankAccount="+req.bankAccount;
-		params += "&ifsc="+req.ifsc;
+		params += "bankAccount="+encodeURIComponent(req.bankAccount);
+		params += "&ifsc="+encodeURIComponent(req.ifsc);
 
 		var path = "/payout/v1/getBeneId"+params;
 		var obj = {};
