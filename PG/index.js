@@ -1,11 +1,18 @@
 const { checkKeysInObject } = require('../utils');
-const { PROD_BASE_URL, TEST_BASE_URL } = require('./constants');
+const {
+    PROD_BASE_URL,
+    TEST_BASE_URL,
+    PG_REL_URL,
+    PG_API_VERSION,
+} = require('./constants');
 
 const Orders = require('./Orders');
 const Refunds = require('./Refunds');
 const Settlements = require('./Settlements');
 const Transactions = require('./Transactions');
 const { VerifyCredentials } = require('./Credentials');
+
+const { doPost } = require('../utils');
 
 class PG {
     constructor(options = {}){
@@ -19,6 +26,15 @@ class PG {
         this.baseUrl = options.env.trim().toUpperCase() === 'TEST' ? TEST_BASE_URL : PROD_BASE_URL;
         this.appId = options.appId;
         this.secretKey = options.secretKey;
+        this.doPost = function ({ url, headers, data }) {
+            return doPost({
+                hostname: this.baseUrl,
+                path: `${PG_REL_URL}${PG_API_VERSION}${url}`,
+                headers,
+                data: { appId: this.appId, secretKey: this.secretKey, ...data },
+            });
+        };
+        // adding PG (resources / methods)
         this.addResources();
     }
     addResources() {

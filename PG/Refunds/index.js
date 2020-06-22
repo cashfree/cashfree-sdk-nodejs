@@ -1,29 +1,20 @@
-const { doPost } = require('../../utils');
 const {
-    PG_REL_URL,
-    PG_API_VERSION,
     ORDER_REFUND_REL_URL,
     REFUNDS_REL_URL,
     REFUND_STATUS_REL_URL,
 } = require('../constants');
 
 function Refunds() {
-    const { baseUrl: hostname, appId, secretKey } = this;
     return {
         InitiateRefund: async (data = {}) => {
             try {
                 // make request
-                const res = await doPost({
-                    hostname,
-                    path: `${PG_REL_URL}${PG_API_VERSION}${ORDER_REFUND_REL_URL}`,
+                const res = await this.doPost({
+                    url: ORDER_REFUND_REL_URL,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    data: {
-                        appId,
-                        secretKey,
-                        ...data,
-                    },
+                    data,
                 });
                 return res;
             } catch (e) {
@@ -36,17 +27,12 @@ function Refunds() {
         FetchAllRefunds: async (data = {}) => {
             try {
                 // make request
-                const res = await doPost({
-                    hostname,
-                    path: `${PG_REL_URL}${PG_API_VERSION}${REFUNDS_REL_URL}`,
+                const res = await this.doPost({
+                    url: REFUNDS_REL_URL,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    data: {
-                        appId,
-                        secretKey,
-                        ...data,
-                    },
+                    data,
                 });
                 return res;
             } catch (e) {
@@ -59,17 +45,12 @@ function Refunds() {
         FetchSingleRefund: async (data = {}) => {
             try {
                 // make request
-                const res = await doPost({
-                    hostname,
-                    path: `${PG_REL_URL}${PG_API_VERSION}${REFUND_STATUS_REL_URL}`,
+                const res = await this.doPost({
+                    url: REFUND_STATUS_REL_URL,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    data: {
-                        appId,
-                        secretKey,
-                        ...data,
-                    },
+                    data,
                 });
                 return res;
             } catch (e) {

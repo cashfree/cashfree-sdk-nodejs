@@ -206,7 +206,7 @@ const Refunds = PG.Refunds;
 - [Fetch Single Refund](https://docs.cashfree.com/docs/rest/guide/#fetch-single-refund)
     ```js
     Refunds.FetchSingleRefund({
-        refundId: '1',
+        refundId: '<REFUND_ID>',
         merchantRefundId: '1', // Provide refundId or merchantRefundId to get refund status
     }).then(data => console.log(data)).catch(error => console.error(error));
     ```
@@ -238,7 +238,7 @@ const Settlements = PG.Settlements;
 - [Fetch Single Settlement](https://docs.cashfree.com/docs/rest/guide/#fetch-single-settlement)
     ```js
     Settlements.FetchSingleSettlement({
-        settlementId: '20', // required
+        settlementId: '<SETTLEMENT_ID>', // required
         lastId: '',
         count: 2,
     }).then(data => console.log(data)).catch(error => console.error(error));

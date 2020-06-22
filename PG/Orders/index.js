@@ -1,7 +1,4 @@
-const { doPost } = require('../../utils');
 const {
-    PG_REL_URL,
-    PG_API_VERSION,
     ORDER_CREATE_REL_URL,
     ORDER_GET_LINK_REL_URL,
     ORDER_GET_DETAILS_REL_URL,
@@ -10,22 +7,16 @@ const {
 } = require('../constants');
 
 function Orders() {
-    const { baseUrl: hostname, appId, secretKey } = this;
     return {
         CreateOrders: async (data = {}) => {
             try {
                 // make request
-                const res = await doPost({
-                    hostname,
-                    path: `${PG_REL_URL}${PG_API_VERSION}${ORDER_CREATE_REL_URL}`,
+                const res = await this.doPost({
+                    url: ORDER_CREATE_REL_URL,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    data: {
-                        appId,
-                        secretKey,
-                        ...data,
-                    },
+                    data,
                 });
                 return res;
             } catch (e) {
@@ -38,17 +29,12 @@ function Orders() {
         GetLink: async (data = {}) => {
             try {
                 // make request
-                const res = await doPost({
-                    hostname,
-                    path: `${PG_REL_URL}${PG_API_VERSION}${ORDER_GET_LINK_REL_URL}`,
+                const res = await this.doPost({
+                    url: ORDER_GET_LINK_REL_URL,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    data: {
-                        appId,
-                        secretKey,
-                        ...data,
-                    },
+                    data,
                 });
                 return res;
             } catch (e) {
@@ -62,17 +48,12 @@ function Orders() {
         GetDetails: async (data = {}) => {
             try {
                 // make request
-                const res = await doPost({
-                    hostname,
-                    path: `${PG_REL_URL}${PG_API_VERSION}${ORDER_GET_DETAILS_REL_URL}`,
+                const res = await this.doPost({
+                    url: ORDER_GET_DETAILS_REL_URL,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    data: {
-                        appId,
-                        secretKey,
-                        ...data,
-                    },
+                    data,
                 });
                 return res;
             } catch (e) {
@@ -86,17 +67,12 @@ function Orders() {
         GetStatus: async (data = {}) => {
             try {
                 // make request
-                const res = await doPost({
-                    hostname,
-                    path: `${PG_REL_URL}${PG_API_VERSION}${ORDER_GET_STATUS_REL_URL}`,
+                const res = await this.doPost({
+                    url: ORDER_GET_STATUS_REL_URL,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    data: {
-                        appId,
-                        secretKey,
-                        ...data,
-                    },
+                    data,
                 });
                 return res;
             } catch (e) {
@@ -110,17 +86,12 @@ function Orders() {
         TriggerPaymentEmail: async (data = {}) => {
             try {
                 // make request
-                const res = await doPost({
-                    hostname,
-                    path: `${PG_REL_URL}${PG_API_VERSION}${ORDER_EMAIL_REL_URL}`,
+                const res = await this.doPost({
+                    url: ORDER_EMAIL_REL_URL,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    data: {
-                        appId,
-                        secretKey,
-                        ...data,
-                    },
+                    data,
                 });
                 return res;
             } catch (e) {
