@@ -5,10 +5,10 @@ Node version 10.9.0 was used for this SDK.
 
 ### Initialize PG
 ```js
-const PG = require('cashfree-sdk').PG;
+const PaymentGateway = require('cashfree-sdk').PG;
 
-// Initialize Cashfree Payment Gateway
-PG.Init({
+// Instantiate Cashfree Payment Gateway
+const PG = new PaymentGateway({
     env: '<ENVIRONMENT>',
     apiVersion: '<API_VERSION>',
     appId: '<YOUR_APP_ID>',
@@ -68,11 +68,11 @@ Can also be used synchronously using async/await:
 Contains the API to verify Credentials.
 #
 ```js
-const PG = require('cashfree-sdk').PG;
+const PaymentGateway = require('cashfree-sdk').PG;
 ```
 - [Verify Credentials](https://docs.cashfree.com/docs/rest/guide/#credentials-verify-api)
     ```js
-    PG.VerifyCredentials({
+    PaymentGateway.VerifyCredentials({
         env: '<ENVIRONMENT>', // must be one of [TEST / PRODUCTION]
         appId: '<YOUR_APP_ID>',
         secretKey: '<YOUR_SECRET_KEY>',
@@ -86,10 +86,10 @@ Contains all APIs related to orders.
 #
 
 ```js
-const PG = require('cashfree-sdk').PG;
+const PaymentGateway = require('cashfree-sdk').PG;
 ```
 
-> Initialize PG with api keys and environment [see example](#initialize-pg)
+> Instantiate the PaymentGateway instance with appId & secretKey [see example](#initialize-pg)
 
 ```js
 const Orders = PG.Orders;
@@ -144,10 +144,10 @@ Contains all APIs related to Transactions.
 #
 
 ```js
-const PG = require('cashfree-sdk').PG;
+const PaymentGateway = require('cashfree-sdk').PG;
 ```
 
-> Initialize PG with api keys and environment [see example](#initialize-pg)
+> Instantiate the PaymentGateway instance with appId & secretKey [see example](#initialize-pg)
 
 ```js
 const Transactions = PG.Transactions;
@@ -171,10 +171,10 @@ Contains all APIs related to Refunds.
 #
 
 ```js
-const PG = require('cashfree-sdk').PG;
+const PaymentGateway = require('cashfree-sdk').PG;
 ```
 
-> Initialize PG with api keys and environment [see example](#initialize-pg)
+> Instantiate the PaymentGateway instance with appId & secretKey [see example](#initialize-pg)
 
 ```js
 const Refunds = PG.Refunds;
@@ -217,10 +217,10 @@ Contains all APIs related to Settlements.
 #
 
 ```js
-const PG = require('cashfree-sdk').PG;
+const PaymentGateway = require('cashfree-sdk').PG;
 ```
 
-> Initialize PG with api keys and environment [see example](#initialize-pg)
+> Instantiate the PaymentGateway instance with appId & secretKey [see example](#initialize-pg)
 
 ```js
 const Settlements = PG.Settlements;
