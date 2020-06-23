@@ -6,7 +6,7 @@ const {
 
 function Refunds() {
     return {
-        InitiateRefund: async (data = {}) => {
+        initiateRefund: async (data = {}) => {
             try {
                 // make request
                 const res = await this.doPost({
@@ -24,7 +24,7 @@ function Refunds() {
                 };
             }
         },
-        FetchAllRefunds: async (data = {}) => {
+        fetchAllRefunds: async (data = {}) => {
             try {
                 // make request
                 const res = await this.doPost({
@@ -42,7 +42,7 @@ function Refunds() {
                 };
             }
         },
-        FetchSingleRefund: async (data = {}) => {
+        fetchSingleRefund: async (data = {}) => {
             try {
                 // make request
                 const res = await this.doPost({

@@ -2,7 +2,7 @@ const { TRANSACTIONS_REL_URL } = require('../constants');
 
 function Transactions() {
     return {
-        FetchTransactions: async (data = {}) => {
+        fetchTransactions: async (data = {}) => {
             try {
                 // make request
                 const res = await this.doPost({

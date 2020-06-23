@@ -6,7 +6,7 @@ const {
 
 function Settlements() {
     return {
-        FetchAllSettlements: async (data = {}) => {
+        fetchAllSettlements: async (data = {}) => {
             try {
                 // make request
                 const res = await this.doPost({
@@ -24,7 +24,7 @@ function Settlements() {
                 };
             }
         },
-        FetchSingleSettlement: async (data = {}) => {
+        fetchSingleSettlement: async (data = {}) => {
             try {
                 // make request
                 const res = await this.doPost({

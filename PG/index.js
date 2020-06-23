@@ -10,7 +10,7 @@ const Orders = require('./Orders');
 const Refunds = require('./Refunds');
 const Settlements = require('./Settlements');
 const Transactions = require('./Transactions');
-const { VerifyCredentials } = require('./Credentials');
+const { verifyCredentials } = require('./Credentials');
 
 const { doPost } = require('../utils');
 
@@ -48,4 +48,4 @@ class PG {
 }
 
 module.exports = PG;
-module.exports.VerifyCredentials = VerifyCredentials;
+module.exports.verifyCredentials = verifyCredentials;

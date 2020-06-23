@@ -8,7 +8,7 @@ Node version 10.9.0 was used for this SDK.
 const PaymentGateway = require('cashfree-sdk').PG;
 
 // Instantiate Cashfree Payment Gateway
-const PG = new PaymentGateway({
+const pg = new PaymentGateway({
     env: '<ENVIRONMENT>',
     apiVersion: '<API_VERSION>',
     appId: '<YOUR_APP_ID>',
@@ -43,7 +43,16 @@ Whether a request succeeded is indicated by the HTTP status code. A 2xx status c
 Every method returns a promise which can be used:
 
 ```js
-    PG.Orders.GetLink({
+    const PaymentGateway = require('cashfree-sdk').PG;
+
+    const pg = new PaymentGateway({
+        env: '<ENVIRONMENT>',
+        apiVersion: '<API_VERSION>',
+        appId: '<YOUR_APP_ID>',
+        secretKey: '<YOUR_SECRET_KEY>',
+    });
+    
+    pg.Orders.getLink({
         orderId: '<ORDER_ID>',
     }).then(data => console.log(data)).catch(error => console.error(error));
 ```
@@ -53,9 +62,18 @@ Every method returns a promise which can be used:
 Can also be used synchronously using async/await:
 
 ```js
+    const PaymentGateway = require('cashfree-sdk').PG;
+
+    const pg = new PaymentGateway({
+        env: '<ENVIRONMENT>',
+        apiVersion: '<API_VERSION>',
+        appId: '<YOUR_APP_ID>',
+        secretKey: '<YOUR_SECRET_KEY>',
+    });
+
     async function getOrderLink() {
         try {
-            const data = await PG.Orders.GetLink({ orderId: '<ORDER_ID>' });
+            const data = await pg.Orders.getLink({ orderId: '<ORDER_ID>' });
             console.log(data);
         } catch (e) {
             console.error(e);
@@ -72,7 +90,7 @@ const PaymentGateway = require('cashfree-sdk').PG;
 ```
 - [Verify Credentials](https://docs.cashfree.com/docs/rest/guide/#credentials-verify-api)
     ```js
-    PaymentGateway.VerifyCredentials({
+    PaymentGateway.verifyCredentials({
         env: '<ENVIRONMENT>', // must be one of [TEST / PRODUCTION]
         appId: '<YOUR_APP_ID>',
         secretKey: '<YOUR_SECRET_KEY>',
@@ -92,13 +110,13 @@ const PaymentGateway = require('cashfree-sdk').PG;
 > Instantiate the PaymentGateway instance with appId & secretKey [see example](#initialize-pg)
 
 ```js
-const Orders = PG.Orders;
+const Orders = pg.Orders;
 ```
 
 
 - [Create Orders](https://docs.cashfree.com/docs/rest/guide/#create-orders)
     ```js
-    Orders.CreateOrders({
+    Orders.createOrders({
         orderId: '<ORDER_ID>', // required
         orderAmount: '154', // required
         orderCurrency: 'INR',
@@ -115,25 +133,25 @@ const Orders = PG.Orders;
     ```
 - [Get Link](https://docs.cashfree.com/docs/rest/guide/#get-link)
     ```js
-    Orders.GetLink({
+    Orders.getLink({
         orderId: '<ORDER_ID>', // required
     }).then(data => console.log(data)).catch(error => console.error(error));
     ```
 - [Get Details](https://docs.cashfree.com/docs/rest/guide/#get-details)
     ```js
-    Orders.GetDetails({
+    Orders.getDetails({
         orderId: '<ORDER_ID>', // required
     }).then(data => console.log(data)).catch(error => console.error(error));
     ```
 - [Get Status](https://docs.cashfree.com/docs/rest/guide/#get-status)
     ```js
-    Orders.GetStatus({
+    Orders.getStatus({
         orderId: '<ORDER_ID>', // required
     }).then(data => console.log(data)).catch(error => console.error(error));
     ```
 - [Trigger Payment Email](https://docs.cashfree.com/docs/rest/guide/#trigger-payment-email)
     ```js
-    Orders.TriggerPaymentEmail({
+    Orders.triggerPaymentEmail({
         orderId: '<ORDER_ID>', // required
     }).then(data => console.log(data)).catch(error => console.error(error));
     ```
@@ -150,12 +168,12 @@ const PaymentGateway = require('cashfree-sdk').PG;
 > Instantiate the PaymentGateway instance with appId & secretKey [see example](#initialize-pg)
 
 ```js
-const Transactions = PG.Transactions;
+const Transactions = pg.Transactions;
 ```
 
 - [Fetch Transactions](https://docs.cashfree.com/docs/rest/guide/#fetch-transactions)
     ```js
-    Transactions.FetchTransactions({ 
+    Transactions.fetchTransactions({ 
         startDate: '2019-01-01', // required
         endDate: '2018-01-11', // required
         txStatus: 'SUCCESS',
@@ -177,12 +195,12 @@ const PaymentGateway = require('cashfree-sdk').PG;
 > Instantiate the PaymentGateway instance with appId & secretKey [see example](#initialize-pg)
 
 ```js
-const Refunds = PG.Refunds;
+const Refunds = pg.Refunds;
 ```
 
 - [Initiate Refund](https://docs.cashfree.com/docs/rest/guide/#initiate-refund)
     ```js
-    Refunds.InitiateRefund({
+    Refunds.initiateRefund({
         orderId: '<ORDER_ID>', // required
         referenceId: '13307', // required
         refundAmount: '102.00', // required
@@ -196,7 +214,7 @@ const Refunds = PG.Refunds;
     ```
 - [Fetch All Refunds](https://docs.cashfree.com/docs/rest/guide/#fetch-all-refunds)
     ```js
-    Refunds.FetchAllRefunds({
+    Refunds.fetchAllRefunds({
         startDate: '2016-04-01', // required
         endDate: '2016-04-27', // required
         lastId: '',
@@ -205,7 +223,7 @@ const Refunds = PG.Refunds;
     ```
 - [Fetch Single Refund](https://docs.cashfree.com/docs/rest/guide/#fetch-single-refund)
     ```js
-    Refunds.FetchSingleRefund({
+    Refunds.fetchSingleRefund({
         refundId: '<REFUND_ID>',
         merchantRefundId: '1', // Provide refundId or merchantRefundId to get refund status
     }).then(data => console.log(data)).catch(error => console.error(error));
@@ -223,12 +241,12 @@ const PaymentGateway = require('cashfree-sdk').PG;
 > Instantiate the PaymentGateway instance with appId & secretKey [see example](#initialize-pg)
 
 ```js
-const Settlements = PG.Settlements;
+const Settlements = pg.Settlements;
 ```
 
 - [Fetch All Settlements](https://docs.cashfree.com/docs/rest/guide/#fetch-all-settlements)
     ```js
-    Settlements.FetchAllSettlements({
+    Settlements.fetchAllSettlements({
         startDate: '2016-04-01', // required
         endDate: '2016-04-30', // required
         lastId: '',
@@ -237,7 +255,7 @@ const Settlements = PG.Settlements;
     ```
 - [Fetch Single Settlement](https://docs.cashfree.com/docs/rest/guide/#fetch-single-settlement)
     ```js
-    Settlements.FetchSingleSettlement({
+    Settlements.fetchSingleSettlement({
         settlementId: '<SETTLEMENT_ID>', // required
         lastId: '',
         count: 2,

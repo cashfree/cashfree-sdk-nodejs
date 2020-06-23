@@ -8,7 +8,7 @@ const {
 
 function Orders() {
     return {
-        CreateOrders: async (data = {}) => {
+        createOrders: async (data = {}) => {
             try {
                 // make request
                 const res = await this.doPost({
@@ -26,7 +26,7 @@ function Orders() {
                 };
             }
         },
-        GetLink: async (data = {}) => {
+        getLink: async (data = {}) => {
             try {
                 // make request
                 const res = await this.doPost({
@@ -45,7 +45,7 @@ function Orders() {
             }
         },
 
-        GetDetails: async (data = {}) => {
+        getDetails: async (data = {}) => {
             try {
                 // make request
                 const res = await this.doPost({
@@ -64,7 +64,7 @@ function Orders() {
             }
         },
 
-        GetStatus: async (data = {}) => {
+        getStatus: async (data = {}) => {
             try {
                 // make request
                 const res = await this.doPost({
@@ -83,7 +83,7 @@ function Orders() {
             }
         },
 
-        TriggerPaymentEmail: async (data = {}) => {
+        triggerPaymentEmail: async (data = {}) => {
             try {
                 // make request
                 const res = await this.doPost({
