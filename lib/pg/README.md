@@ -176,7 +176,6 @@ Contains all APIs related to Transactions.
       startDate: '2019-01-01', // required
       endDate: '2018-01-11', // required
       txStatus: 'SUCCESS',
-      lastId: '',
       count: 2,
     })
     .then((data) => console.log(data))
@@ -210,7 +209,6 @@ Contains all APIs related to Refunds.
     .fetchAllRefunds({
       startDate: '2016-04-01', // required
       endDate: '2016-04-27', // required
-      lastId: '',
       count: 2,
     })
     .then((data) => console.log(data))
@@ -237,7 +235,6 @@ Contains all APIs related to Settlements.
     .fetchAllSettlements({
       startDate: '2016-04-01', // required
       endDate: '2016-04-30', // required
-      lastId: '',
       count: 2,
     })
     .then((data) => console.log(data))
@@ -246,9 +243,8 @@ Contains all APIs related to Settlements.
 - [Fetch Single Settlement](https://docs.cashfree.com/docs/rest/guide/#fetch-single-settlement)
   ```js
   pg.settlements
-    .fetchSingleSettlement({
+    .fetchSettlementById({
       settlementId: '<SETTLEMENT_ID>', // required
-      lastId: '',
       count: 2,
     })
     .then((data) => console.log(data))
