@@ -27,7 +27,7 @@ const { Payouts } = require('cashfree-sdk');
 // Initialize Cashfree Payouts
 const payouts = new Payouts({
   env: 'TEST',
-  clientID: '<CLIENT_ID>',
+  clientId: '<CLIENT_ID>',
   clientSecret: '<CLIENT_SECRET>',
   pathToPublicKey: '/path/to/your/public/key/file.pem',
   publicKey: 'ALTERNATIVE TO SPECIFYING PATH (DIRECTLY PASTE PublicKey)',
