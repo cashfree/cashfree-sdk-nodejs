@@ -1,12 +1,12 @@
 {
   "name": "cashfree-sdk",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Official Node SDK for Cashfree API",
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=TEST mocha --timeout 10000"
   },
-  "author": "Cashfree",
+  "author": "Shahrukh Mansuri",
   "license": "ISC",
   "repository": {
     "type": "git",

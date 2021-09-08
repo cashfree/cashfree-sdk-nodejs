@@ -71,13 +71,13 @@ const payoutsInstance = new Payouts({
 });
 ```
 
-| Option            | Default                                                                                                      | Description                                                         |
-| ----------------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
-| `env`             | `TEST`                                                                                                       | Environment to be initialized. Can be set to `TEST` or `PRODUCTION` |
-| `clientId`        | `` | `clientId` which can be generated on cashfree dashboard.                                                |
-| `clientSecret`    | `` | `clientSecret` which can be found alongside generated `ClientId`.                                       |
-| `pathToPublicKey` | `` | Either specify the path to your `.pem` public key file or use `publicKey` Param and pass the key there. |
-| `publicKey`       | `` | Pass your Public Key to this parameter as an alternative to `pathToPublicKey`.                          |
+| Option            | Default | Description                                                                                             |
+| ----------------- | ------- | ------------------------------------------------------------------------------------------------------- |
+| `env`             | `TEST`  | Environment to be initialized. Can be set to `TEST` or `PRODUCTION`                                     |
+| `clientId`        | ``      | `clientId` which can be generated on cashfree dashboard.                                                |
+| `clientSecret`    | ``      | `clientSecret` which can be found alongside generated `ClientId`.                                       |
+| `pathToPublicKey` | ``      | Either specify the path to your `.pem` public key file or use `publicKey` Param and pass the key there. |
+| `publicKey`       | ``      | Pass your Public Key to this parameter as an alternative to `pathToPublicKey`.                          |
 
 ## WebHook Verification
 
@@ -88,7 +88,7 @@ To verify the webhook received from Cashfree for different events and accept the
 Pass the webhook received along with the payload type.
 
 ```js
-Payouts.verifySignature(webhookPostDataJson); // returns true or false
+Payouts.verifySignature(webhookPostDataJson, signature, clientSecret); // returns true or false
 ```
 
 ### Using Promises
