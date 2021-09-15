@@ -6,7 +6,7 @@
   "scripts": {
     "test": "NODE_ENV=TEST mocha --timeout 10000"
   },
-  "author": "Shahrukh Mansuri",
+  "author": "Cashfree",
   "license": "ISC",
   "repository": {
     "type": "git",
