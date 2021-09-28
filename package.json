@@ -1,6 +1,6 @@
 {
   "name": "@cashfreepayments/cashfree-sdk",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Official Node SDK for Cashfree API",
   "main": "index.js",
   "scripts": {
