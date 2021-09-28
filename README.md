@@ -19,7 +19,7 @@ Please refer to the [Cashfree Docs](https://docs.cashfree.com/docs/) for the com
 The preferred way to install the Cashfree SDK for Node.js is to use the [npm](http://npmjs.org) package manager for Node.js. Simply type the following into a terminal window:
 
 ```sh
-npm i https://github.com/cashfree/cashfree-sdk-nodejs.git
+npm i @cashfreepayments/cashfree-sdk
 ```
 
 ## Getting Started
@@ -88,7 +88,7 @@ To verify the webhook received from Cashfree for different events and accept the
 Pass the webhook received along with the payload type.
 
 ```js
-Payouts.verifySignature(webhookPostDataJson); // returns true or false
+Payouts.verifySignature(webhookPostDataJson, signature, clientSecret); // returns true or false
 ```
 
 ### Using Promises
