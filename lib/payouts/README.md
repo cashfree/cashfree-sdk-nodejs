@@ -9,7 +9,7 @@ Please refer to the [Cashfree Docs](https://docs.cashfree.com/docs/) for the com
 ###### In case of static IP (Your IP is whitelisted)
 
 ```js
-const { Payouts } = require('cashfree-sdk');
+const { Payouts } = require('@cashfreepayments/cashfree-sdk');
 
 // Initialize Cashfree Payouts
 const payouts = new Payouts({
@@ -22,7 +22,7 @@ const payouts = new Payouts({
 ###### In case of dynamic IP you will need a public key for signature.
 
 ```js
-const { Payouts } = require('cashfree-sdk');
+const { Payouts } = require('@cashfreepayments/cashfree-sdk');
 
 // Initialize Cashfree Payouts
 const payouts = new Payouts({

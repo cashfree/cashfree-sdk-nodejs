@@ -44,7 +44,7 @@ The package needs to be configured with your account's secret key which is avail
 #
 
 ```js
-const { Payouts } = require('cashfree-sdk');
+const { Payouts } = require('@cashfreepayments/cashfree-sdk');
 
 // Instantiate Cashfree Payouts
 const payoutsInstance = new Payouts({
@@ -59,7 +59,7 @@ const payoutsInstance = new Payouts({
 #
 
 ```js
-const { Payouts } = require('cashfree-sdk');
+const { Payouts } = require('@cashfreepayments/cashfree-sdk');
 
 // Instantiate Cashfree Payouts
 const payoutsInstance = new Payouts({

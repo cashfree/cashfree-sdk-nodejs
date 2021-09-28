@@ -9,7 +9,7 @@ Please refer to the [Cashfree Docs](https://docs.cashfree.com/docs/) for the com
 ### Get Started
 
 ```js
-const { PaymentGateway } = require('cashfree-sdk');
+const { PaymentGateway } = require('@cashfreepayments/cashfree-sdk');
 
 // Instantiate Cashfree Payment Gateway
 const pg = new PaymentGateway({
@@ -45,7 +45,7 @@ Whether a request succeeded is indicated by the HTTP status code. A 2xx status c
 Every method returns a promise which can be used:
 
 ```js
-const { PaymentGateway } = require('cashfree-sdk');
+const { PaymentGateway } = require('@cashfreepayments/cashfree-sdk');
 
 const pg = new PaymentGateway({
   env: '<ENVIRONMENT>',
@@ -65,7 +65,7 @@ pg.orders
 ### Using Async/Await
 
 ```js
-const { PaymentGateway } = require('cashfree-sdk');
+const { PaymentGateway } = require('@cashfreepayments/cashfree-sdk');
 
 const pg = new PaymentGateway({
   env: '<ENVIRONMENT>',
@@ -89,7 +89,7 @@ async function getOrderLink() {
 Refer [Verify Credentials](https://docs.cashfree.com/docs/rest/guide/#credentials-verify-api) for further documentation
 
 ```js
-const { PaymentGateway } = require('cashfree-sdk');
+const { PaymentGateway } = require('@cashfreepayments/cashfree-sdk');
 ```
 
 ```js
