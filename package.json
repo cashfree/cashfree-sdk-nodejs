@@ -1,5 +1,5 @@
 {
-  "name": "cashfree-sdk",
+  "name": "@cashfreepayments/cashfree-sdk",
   "version": "0.1.6",
   "description": "Official Node SDK for Cashfree API",
   "main": "index.js",
@@ -10,7 +10,10 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cashfree/cashfree-sdk-nodejs.git"
+    "url": "https://github.com/cashfree/cashfree-sdk-nodejs.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "engines": {
     "node": ">=10.9.0",
@@ -21,7 +24,8 @@
     "node",
     "sdk",
     "payment",
-    "gateway"
+    "gateway",
+    "payouts"
   ],
   "bugs": {
     "url": "https://github.com/cashfree/cashfree-sdk-nodejs/issues"
