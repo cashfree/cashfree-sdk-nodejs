@@ -1,6 +1,6 @@
 ## Payouts API Guide
 
-Please refer to the [Cashfree Docs](https://docs.cashfree.com/docs/) for the complete API reference.
+Please refer to the [Cashfree Docs](https://docs.cashfree.com/) for the complete API reference.
 
 `Node version 10.9.0 was used for this SDK.`
 
@@ -38,7 +38,7 @@ const payouts = new Payouts({
 
 Contains all APIs related to beneficiary.
 
-- [Add Beneficiary](https://docs.cashfree.com/docs/payout/guide/#add-beneficiary)
+- [Add Beneficiary](https://docs.cashfree.com/reference#create-beneficiary)
   ```js
   payouts.beneficiary
     .add({
@@ -57,7 +57,7 @@ Contains all APIs related to beneficiary.
       console.log(response);
     });
   ```
-- [Get Beneficiary Details](https://docs.cashfree.com/docs/payout/guide/#get-beneficiary-details)
+- [Get Beneficiary Details](https://docs.cashfree.com/reference#get-beneficiary-details)
   ```js
   payouts.beneficiary
     .getById({
@@ -67,7 +67,7 @@ Contains all APIs related to beneficiary.
       console.log(d);
     });
   ```
-- [Get Beneficiary Id](https://docs.cashfree.com/docs/payout/guide/#fetch-beneficiary-id)
+- [Get Beneficiary Id](https://docs.cashfree.com/reference#get-beneficiary-id)
   ```js
   payouts.beneficiary
     .getIdByBankDetails({
@@ -78,11 +78,25 @@ Contains all APIs related to beneficiary.
       console.log(d);
     });
   ```
-- [Remove Beneficiary](https://docs.cashfree.com/docs/payout/guide/#fetch-beneficiary-id)
+- [Remove Beneficiary](https://docs.cashfree.com/reference#remove-beneficiary)
   ```js
   payouts.beneficiary
     .remove({
       beneId: 'JOHN18011',
+    })
+    .then(function (d) {
+      console.log(d);
+    });
+  ```
+- [Get Beneficiary History](https://docs.cashfree.com/reference#get-beneficiary-history)
+  ```js
+  payouts.beneficiary
+    .getHistory({
+      beneId: 'JOHN18011',
+      startDate: "2021-09-21", // optional
+      endDate: "2021-10-07", // optional
+      perPage: 25, // optional, max limit 25
+      page: 2, // optional, but default value is always 1 if not specified
     })
     .then(function (d) {
       console.log(d);
@@ -97,7 +111,7 @@ Contains all APIs related to Transfers.
 
 #
 
-- [Request Transfer](https://docs.cashfree.com/docs/payout/guide/#request-transfer)
+- [Request Transfer](https://docs.cashfree.com/reference#standard-transfer-sync)
 
   ```js
   payouts.transfers
@@ -111,7 +125,7 @@ Contains all APIs related to Transfers.
     });
   ```
 
-- [Get Transfer Status](https://docs.cashfree.com/docs/payout/guide/#get-transfer-status)
+- [Get Transfer Status](https://docs.cashfree.com/reference#standard-transfer-async)
   ```js
   payouts.transfers
     .getTransferStatus({
@@ -122,7 +136,7 @@ Contains all APIs related to Transfers.
       console.log(d);
     });
   ```
-- [Get Transfers](https://docs.cashfree.com/docs/payout/guide/#list-transfers)
+- [Get Transfers](https://docs.cashfree.com/reference#get-transfer-status)
   ```js
   payouts.transfers
     .getTransfers({
@@ -132,7 +146,7 @@ Contains all APIs related to Transfers.
       console.log(d);
     });
   ```
-- [Request Batch Transfer](https://docs.cashfree.com/docs/payout/guide/#batchtransfer-api)
+- [Request Batch Transfer](https://docs.cashfree.com/reference#batch-transfer)
 
   ```js
   payouts.transfers
@@ -175,7 +189,7 @@ Contains all APIs related to Transfers.
     });
   ```
 
-* [Get Batch Transfer Status](https://docs.cashfree.com/docs/payout/guide/#get-batch-transfer-status-request)
+* [Get Batch Transfer Status](https://docs.cashfree.com/reference#get-batch-transfer-status)
 
   ```js
   payouts.transfers
